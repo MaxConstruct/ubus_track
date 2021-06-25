@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:ubustrackservice/model/baseapi.dart';
-import 'package:ubustrackservice/model/global_state.dart';
+import 'package:ubus_track/model/baseapi.dart';
+import 'package:ubus_track/model/global_state.dart';
+import 'package:ubus_track/model/staionModel.dart';
 
 class LocationRegisterLobby extends StatefulWidget {
   @override
@@ -17,10 +18,12 @@ class _LocationRegisterLobbyState extends State<LocationRegisterLobby> {
   final storage = FlutterSecureStorage();
 
   void registerAction(String token) {
-    _onLoading();
+    _onLoading(token);
   }
 
-  void _onLoading() {
+
+
+  void _onLoading(token) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -40,14 +43,16 @@ class _LocationRegisterLobbyState extends State<LocationRegisterLobby> {
         );
       },
     );
-
-    BaseAPI.registerDevice(_controller.value.text.toString()).then((val) async {
+    print(token);
+    BaseAPI.registerDevice(token).then((val) async {
       if(val.statusCode == 200) {
-        Map<String, dynamic> res = jsonDecode(val.data);
+        var res = val.data;
         print(res['id']);
         print(val.data);
         GlobalValue.uid = res['id'];
         await storage.write(key: 'uid', value: GlobalValue.uid.toString());
+        await GlobalValue.initStation();
+
         Navigator.pushReplacementNamed(context, '/main');
       } else {
         Navigator.of(context).pop();
