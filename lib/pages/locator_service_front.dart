@@ -202,6 +202,7 @@ class _LocationStreamServiceState extends State<LocationStreamService> {
                     onPressed: () async {
                       await stopService();
                     },
+                    style: ElevatedButton.styleFrom(primary: Colors.redAccent),
                     child: Text("Stop Service")),
                 IconButton(
                     icon: Icon(isMute ? Icons.volume_off:Icons.volume_up,
@@ -259,7 +260,21 @@ class _LocationStreamServiceState extends State<LocationStreamService> {
           title: Image.asset('assets/logo/logo.png', height: 45,),
           // title: Text('Location Service'),
           actions: [
-            IconButton(icon: Icon(Icons.logout, color: Colors.red,), onPressed: onLogOutAction)
+            PopupMenuButton<int>(
+              onSelected: (int result) {
+                if(result == 0) {
+                  onLogOutAction();
+                }
+              },
+              icon: Icon(Icons.logout, color: Colors.red,),
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
+                const PopupMenuItem<int>(
+                  value: 0,
+                  child: Text('Logout'),
+                ),
+              ],
+            )
+            // IconButton(icon: Icon(Icons.logout, color: Colors.red,), onPressed: onLogOutAction)
           ],
         ),
         body: body

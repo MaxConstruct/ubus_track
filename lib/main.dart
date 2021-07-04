@@ -98,13 +98,16 @@ class _LoadingState extends State<Loading> {
             return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                Text('Loading...', style: TextStyle(
-                fontSize: 20,
-                color: Colors.blueGrey,
-            ),),
-            SizedBox(height: 50,),
-            CircularProgressIndicator()
-            ]);
+                  Text('Loading...',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blueGrey
+                    )
+                  ),
+                  SizedBox(height: 50,),
+                  CircularProgressIndicator()
+                ]
+            );
           },
         ),
       ),
