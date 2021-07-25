@@ -95,7 +95,7 @@ class _LocationRegisterLobbyState extends State<LocationRegisterLobby> {
         );
       },
     );
-    
+
     checkKeyExist(token).then((keyExist) async {
       if(keyExist) {
         GlobalValue.uid = token;
