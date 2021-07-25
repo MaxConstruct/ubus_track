@@ -22,8 +22,8 @@ class _LocationRegisterLobbyState extends State<LocationRegisterLobby> {
     var response = await BaseAPI.getLocation();
     if(response.statusCode == 200) {
       Map<String, dynamic> loc = response.data;
-      loc.keys.contains(key);
-      return true;
+      return loc.keys.contains(key);
+      // return true;
     }
     return false;
   }
@@ -96,7 +96,7 @@ class _LocationRegisterLobbyState extends State<LocationRegisterLobby> {
         );
       },
     );
-    
+
     checkKeyExist(token).then((keyExist) async {
       if(keyExist) {
         GlobalValue.uid = token;
