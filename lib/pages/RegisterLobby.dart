@@ -22,8 +22,7 @@ class _LocationRegisterLobbyState extends State<LocationRegisterLobby> {
     var response = await BaseAPI.getLocation();
     if(response.statusCode == 200) {
       Map<String, dynamic> loc = response.data;
-      loc.keys.contains(key);
-      return true;
+      return loc.keys.contains(key);
     }
     return false;
   }
@@ -148,7 +147,7 @@ class _LocationRegisterLobbyState extends State<LocationRegisterLobby> {
                     child: Text('Register',)
                 ),
                 onPressed: () {
-                  registerAction(_controller.value.text);
+                  registerAction(_controller.value.text.toString());
                 },
               )
             ],

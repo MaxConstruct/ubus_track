@@ -48,7 +48,7 @@ class BaseAPI {
       print(e);
       return Response(
         statusCode: e.response?.statusCode ?? 500,
-        data: e.response != null ? jsonDecode(e.response?.data)['error'] : e.message,
+        data: e.response != null ? e.response?.data['err_desc'] : e.message,
         requestOptions: e.requestOptions,
       );
     }

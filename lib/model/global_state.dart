@@ -34,12 +34,19 @@ class GlobalValue {
 
   static String getVoiceAsset(String stationID) {
     switch(stationID) {
-      case '5': return 'audios/5.mp3';
-      case '7': return 'audios/9.mp3';
-      case '9': return 'audios/3.mp3';
-      case '10': return 'audios/8.mp3';
-      // case '12': return 'audios/12.mp3';
-      // case '17': return 'audios/1.mp3';
+      case '5': return 'audios/5.wav';
+      case '7': return 'audios/9.wav';
+      case '9': return 'audios/3.wav';
+      case '10': return 'audios/8.wav';
+      case '12': return 'audios/12.wav';
+      case '17': return 'audios/1.wav';
+      case '18': return 'audios/4.wav';
+      case '19': return 'audios/15.wav';
+      case '20': return 'audios/17.wav';
+      case '21': return 'audios/18.wav';
+      case '22': return 'audios/19.wav';
+      case '23': return 'audios/14.wav';
+      case '24': return 'audios/11.wav';
       default: return 'n/a';
     }
   }
