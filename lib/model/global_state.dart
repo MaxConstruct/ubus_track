@@ -36,7 +36,7 @@ class GlobalValue {
     switch(stationID) {
       case '5': return 'audios/5.wav';
       case '7': return 'audios/9.wav';
-      case '9': return 'audios/3.wav';
+      case '9': return 'audios/2.wav';
       case '10': return 'audios/8.wav';
       case '12': return 'audios/12.wav';
       case '17': return 'audios/1.wav';

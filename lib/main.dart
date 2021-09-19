@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'UBUS TRACK',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         primaryColor: GlobalValue.primaryColor,
         primaryTextTheme: Theme.of(context).primaryTextTheme.copyWith(
