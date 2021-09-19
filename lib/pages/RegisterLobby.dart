@@ -28,6 +28,7 @@ class _LocationRegisterLobbyState extends State<LocationRegisterLobby> {
   }
 
   void registerAction(String token) {
+
     _onLoading(token);
   }
 

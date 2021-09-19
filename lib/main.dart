@@ -7,7 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:ubus_track/pages/RegisterLobby.dart';
 import 'package:ubus_track/pages/locator_service_front.dart';
 import 'package:ubus_track/model/staionModel.dart';
-
+import 'package:permission_handler/permission_handler.dart';
 import 'model/baseapi.dart';
 import 'model/global_state.dart';
 
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'UBUS TRACK',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         primaryColor: GlobalValue.primaryColor,
         primaryTextTheme: Theme.of(context).primaryTextTheme.copyWith(
@@ -73,7 +74,14 @@ class _LoadingState extends State<Loading> {
 
   final storage = FlutterSecureStorage();
 
+  checkPermission() async {
+    if((await Permission.locationAlways.status) != null) {
+      await Permission.locationAlways.request();
+    }
+  }
+
   Future<void> initApp(BuildContext context) async {
+    await checkPermission();
     bool hasKey = await storage.containsKey(key: 'uid');
     if(hasKey) {
       GlobalValue.uid = await storage.read(key: 'uid');
